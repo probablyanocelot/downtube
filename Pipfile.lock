@@ -1,0 +1,53 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "e7561ca01e69bbb497d4e8b5773239ea814d65b6c1d85e2b685c044ab09273a0"
+        },
+        "pipfile-spec": 6,
+        "requires": {
+            "python_version": "3.9"
+        },
+        "sources": [
+            {
+                "name": "pypi",
+                "url": "https://pypi.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "pafy": {
+            "hashes": [
+                "sha256:364f1d1312c89582d97dc7225cf6858cde27cb11dfd64a9c2bab1a2f32133b1e",
+                "sha256:769e35aa6988686d47fa2ab235d15c9952c7873c470f6a6b05cf6bcd93e62515"
+            ],
+            "index": "pypi",
+            "version": "==0.5.5"
+        },
+        "pyfiglet": {
+            "hashes": [
+                "sha256:c6c2321755d09267b438ec7b936825a4910fec696292139e664ca8670e103639",
+                "sha256:d555bcea17fbeaf70eaefa48bb119352487e629c9b56f30f383e2c62dd67a01c"
+            ],
+            "index": "pypi",
+            "version": "==0.8.post1"
+        },
+        "python-dotenv": {
+            "hashes": [
+                "sha256:32b2bdc1873fd3a3c346da1c6db83d0053c3c62f28f1f38516070c4c8971b1d3",
+                "sha256:a5de49a31e953b45ff2d2fd434bbc2670e8db5273606c1e737cc6b93eff3655f"
+            ],
+            "index": "pypi",
+            "version": "==0.19.2"
+        },
+        "youtube-dl": {
+            "hashes": [
+                "sha256:bc59e86c5d15d887ac590454511f08ce2c47698d5a82c27bfe27b5d814bbaed2",
+                "sha256:f1336d5de68647e0364a47b3c0712578e59ec76f02048ff5c50ef1c69d79cd55"
+            ],
+            "index": "pypi",
+            "version": "==2021.12.17"
+        }
+    },
+    "develop": {}
+}
