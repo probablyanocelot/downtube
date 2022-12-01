@@ -1,49 +1,17 @@
 import pafy
-import os
 import pyfiglet
 import argparse
-from dotenv import load_dotenv
-
-load_dotenv()
-
-YT_API_KEY = os.getenv('YT_API_KEY')
-
-
-def yt_query(*terms, api_key=YT_API_KEY):
-    ''' GET VIDEO BY BEST MATCH OF QUERY '''
-
-    html = urllib.request.urlopen(
-        "https://www.youtube.com/results?search_query=" + '+'.join(term for term in terms))
-    video_ids = re.findall(r"watch\?v=(\S{11})", html.read().decode())
-    url = "https://www.youtube.com/watch?v=" + video_ids[0]
-    title = title_from_id(video_ids[0])
-    return url
+import yt
 
 
 def cli_banner(text):
     print(pyfiglet.figlet_format(text))
 
 
-def pafy_dl(url):
-    video = pafy.new(url)
-
-    # get best resolution regardless of format
-    best = video.getbest()
-    print(best.resolution, best.extension)
-
-    # Download the video
-    best.download()
-
-
 def cli_main():
     # Create the parser
     my_parser = argparse.ArgumentParser(
-        description='Provide a youtube link to download')
-
-    # Define argument behavior
-    my_args = {
-        '-u': '',
-    }
+        description='Download a video from YouTube')
 
     # Add the arguments
     my_parser.add_argument('-u', '--url',
@@ -52,17 +20,28 @@ def cli_main():
                            help="the link to the video",
                            )
 
-    # my_parser.add_argument('Url',
-    #                        metavar='url',
-    #                        type=str,
-    #                        help='the link to the video')
+    my_parser.add_argument('Query',
+                           metavar='query',
+                           type=str,
+                           help='search by keywords')
 
     # Execute the parse_args() method
     args = my_parser.parse_args()
 
+    if args.Query:
+        query = args.Query
+        print(f'QUERY :  {query}')
+        search_terms = query.split('-')
+        print(f'SEARCH TERMS :  {search_terms}')
+
+        video = yt.get_first_video(search_terms)
+
+        url = video.url
+        title = video.title
+
     if args.url:
         url = args.url()
-        pafy_dl(url)
+        yt.pafy_dl(url)
 
     # input_path = args.Path
 
