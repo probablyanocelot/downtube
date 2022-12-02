@@ -1,6 +1,7 @@
 import pyfiglet
 import argparse
 import yt
+import os
 
 
 def cli_banner(text):
@@ -8,6 +9,10 @@ def cli_banner(text):
 
 
 def cli_main():
+    # If no 'dl' folder, make one
+    if not os.path.exists('./dl'):
+        os.mkdir('./dl')
+
     # Create the parser
     my_parser = argparse.ArgumentParser(
         description='Download a video from YouTube')
