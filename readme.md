@@ -5,7 +5,7 @@ Requirements:
 Installation:
 
     - Install Required Python Packages  
-        pip install -r requirements.txt  
+            pip install -r requirements.txt  
         
     - Remove or Comment Lines in the 'pafy' python package, usually `~/Lib/site-packages/pafy`:
             self._likes = self._ydl_info['like_count']  
