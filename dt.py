@@ -1,4 +1,3 @@
-import pafy
 import pyfiglet
 import argparse
 import yt
@@ -30,24 +29,29 @@ def cli_main():
 
     if args.Query:
         query = args.Query
-        print(f'QUERY :  {query}')
-        search_terms = query.split('-')
-        print(f'SEARCH TERMS :  {search_terms}')
-
-        video = yt.get_first_video(search_terms)
-
-        url = video.url
-        title = video.title
+        # print(f'QUERY :  {query}')
+        yt.query_dl(query)
 
     if args.url:
         url = args.url()
-        yt.pafy_dl(url)
+        yt.pafy_dl_audio(url)
+
+    print('------------------------------ DOWNLOAD COMPLETE ------------------------------')
 
     # input_path = args.Path
 
     # if not os.path.isdir(input_path):
     #     print('The path specified does not exist')
     #     sys.exit()
+
+
+def cli_secondary():
+    query = input('[X] Next download query (use-hyphens): ')
+
+    if query == 'exit':
+        sys.exit()
+
+    yt.query_dl(query)
 
 
 if __name__ == '__main__':
